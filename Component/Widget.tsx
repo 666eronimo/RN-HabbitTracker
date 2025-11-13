@@ -9,7 +9,6 @@ const Header = () => (
       <Text style={styles.text}>Good Morning!</Text>
       <Text style={styles.text}>Kamis, 14-03-2025</Text>
     </View>
-
     <Image source={require("../assets/images/profileimage.png")} />
   </View>
 );
@@ -18,6 +17,7 @@ const Widget = () => (
   <View style={styles.widgetSeperator}>
     <View style={styles.container}>
       <Text>streak</Text>
+      <Image source={require("../assets/images/StreakIcon.png")} style={styles.imageWidget}/>
       <Text>10 days streak</Text>
     </View>
 
@@ -25,12 +25,14 @@ const Widget = () => (
 
     <View style={styles.container}>
       <Text>Progress</Text>
+      <Image source={require("../assets/images/ProgressIcon.png")} style={styles.imageWidget}/>
       <Text>60%</Text>
     </View>
 
     <Separator />
 
     <View style={styles.container}>
+      <Image source={require("../assets/images/NewHabbitIcon.png")} style={styles.imageWidget}/>
       <Text>Add New Habbit</Text>
     </View>
   </View>
@@ -40,6 +42,8 @@ const styles = StyleSheet.create({
   headercontainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    maxHeight: 81,
+    maxWidth: 400,
   },
   headertextcontainer: {
     flexDirection: "column",
@@ -47,15 +51,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginHorizontal: 16,
+    marginRight: 16,
     backgroundColor: "#00A991",
     height: 123,
     width: 99,
     borderRadius: 12,
+    maxHeight: 99,
+    maxWidth: 123,
   },
   widgetSeperator: {
-    justifyContent: "center",
+    // justifyContent: "center",
     flexDirection: "row",
+    marginVertical: 15,
+    
   },
   title: {
     textAlign: "center",
@@ -66,9 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   separator: {
-    marginVertical: 8,
-    borderBottomColor: "#737373",
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    // marginHorizontal: 7,
   },
   text: {
     fontSize: 26,
@@ -76,11 +82,10 @@ const styles = StyleSheet.create({
   text2: {
     fontSize: 16,
   },
-
-  //   widget: {
-  //     color: #00A991,
-
-  //   },
+  imageWidget: {
+    minHeight: 50,
+    minWidth: 50,
+  }
 });
 
 export { Header, Widget };
