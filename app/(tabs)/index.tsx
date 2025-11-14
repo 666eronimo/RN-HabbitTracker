@@ -2,22 +2,24 @@
 import { Header, Widget } from "@/Component/Widget";
 import { StyleSheet, View } from "react-native";
 import Grid from '@/Component/Grid'
+import TaskList from "@/Component/TaskList";
 
 
 export default function dashboard() {
     return(
-        <view style={styles.HomeMargin}>
+        <View style={styles.HomeMargin}>
             <Header/>
             <Widget/>
             <Grid />
-        </view>
+            <TaskList />
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
 HomeMargin: {
-    marginLeft: 20,
-    marginRight: 20,
+    paddingHorizontal: 20,
     marginTop: 72,
+    width: "100%",
 }
 });
