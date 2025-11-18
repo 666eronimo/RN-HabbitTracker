@@ -18,7 +18,10 @@ const Widget = () => (
   <View style={styles.widgetSeperator}>
     <View style={styles.container}>
       <Text>streak</Text>
-      <Image source={require("../assets/images/StreakIcon.png")} style={styles.imageWidget}/>
+      <Image
+        source={require("../assets/images/StreakIcon.png")}
+        style={styles.imageWidget}
+      />
       <Text>10 days streak</Text>
     </View>
 
@@ -26,15 +29,21 @@ const Widget = () => (
 
     <View style={styles.container}>
       <Text>Progress</Text>
-      <Image source={require("../assets/images/ProgressIcon.png")} style={styles.imageWidget}/>
+      <Image
+        source={require("../assets/images/ProgressIcon.png")}
+        style={styles.imageWidget}
+      />
       <Text>60%</Text>
     </View>
 
     <Separator />
 
     <View style={styles.container}>
-      <Image source={require("../assets/images/NewHabbitIcon.png")} style={styles.imageWidget}/>
-       <Pressable
+      <Image
+        source={require("../assets/images/NewHabbitIcon.png")}
+        style={styles.imageWidget}
+      />
+      <Pressable
         style={styles.AddNewButton}
         onPress={() => router.push("/AddNewHabbit")}
       >
@@ -70,7 +79,6 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
     flexDirection: "row",
     marginVertical: 15,
-    
   },
   title: {
     textAlign: "center",
@@ -90,7 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   imageWidget: {
-    
     minHeight: 50,
     minWidth: 50,
   },
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
   },
   AddNewText: {
     fontSize: 13,
-    justifyContent: "center"
+    justifyContent: "center",
   },
 });
 

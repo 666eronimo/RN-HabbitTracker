@@ -4,14 +4,11 @@ import { StyleSheet, View, Text, Image } from "react-native";
 const TaskList = () => {
   return (
     <View style={styles.container}>
-
-      
       <View style={styles.headerRow}>
         <Text style={styles.headerText}>Daily Task</Text>
         <Text style={styles.seeAll}>See All</Text>
       </View>
 
-      
       <View style={styles.taskRow}>
         <View style={[styles.statusDot, { backgroundColor: "#00A991" }]} />
 
@@ -28,7 +25,6 @@ const TaskList = () => {
         />
       </View>
 
-    
       <View style={styles.taskRow}>
         <View style={[styles.statusDot, { backgroundColor: "#B0BEC5" }]} />
 
@@ -76,8 +72,6 @@ const TaskList = () => {
           style={styles.editIcon}
         />
       </View>
-      
-
     </View>
   );
 };
@@ -85,7 +79,7 @@ const TaskList = () => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    marginTop: 20
+    marginTop: 20,
   },
 
   headerRow: {
