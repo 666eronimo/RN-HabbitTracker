@@ -5,16 +5,21 @@ import {
   Text,
   TextInput,
   Pressable,
-  Button,
+  Switch,
+  Image,
 } from "react-native";
 
 const AddNewHabbit = () => {
   const [isToggled, setIsToggled] = useState(false);
   const defaultColor = "white";
   const toggledColor = "#00A991";
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <View style={styles.AddNewHabbitPage}>
-      <View>
+      <View style={styles.sectionSpacing}>
         <Text style={styles.sectionTitle}>New Habbit</Text>
         <TextInput
           placeholder="Meditation"
@@ -23,7 +28,7 @@ const AddNewHabbit = () => {
         ></TextInput>
       </View>
 
-      <View>
+      <View style={styles.sectionSpacing}>
         <Text style={styles.sectionTitle}>Description</Text>
         <TextInput
           placeholder="meditation before sleep"
@@ -31,7 +36,7 @@ const AddNewHabbit = () => {
           style={styles.textInput}
         ></TextInput>
       </View>
-      <View>
+      <View style={styles.sectionSpacing}>
         <Text style={styles.sectionTitle}>Goals</Text>
         <TextInput
           placeholder="15 minutes of meditation everyday"
@@ -41,65 +46,102 @@ const AddNewHabbit = () => {
       </View>
       <View>
         <Text style={styles.sectionTitle}>Types of Habbit</Text>
-        <Pressable
-          onPress={() => setIsToggled((current) => !current)}
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: isToggled ? toggledColor : defaultColor,
-            },
-          ]}
-        >
-          Personal Growth
-        </Pressable>
-        <Pressable
-          onPress={() => setIsToggled((current) => !current)}
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: isToggled ? toggledColor : defaultColor,
-            },
-          ]}
-        >
-          Hobby and creativity
-        </Pressable>
-        <Pressable
-          onPress={() => setIsToggled((current) => !current)}
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: isToggled ? toggledColor : defaultColor,
-            },
-          ]}
-        >
-          Health and fitness
-        </Pressable>
-        <Pressable
-          onPress={() => setIsToggled((current) => !current)}
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: isToggled ? toggledColor : defaultColor,
-            },
-          ]}
-        >
-          Work and Productivity
-        </Pressable>
-        <Pressable
-          onPress={() => setIsToggled((current) => !current)}
-          style={({ pressed }) => [
-            styles.button,
-            {
-              backgroundColor: isToggled ? toggledColor : defaultColor,
-            },
-          ]}
-        >
-          Home and routine
-        </Pressable>
+        <View style={styles.habbitSection}>
+          <Image source={require("../../assets/images/PersonalGrowth.png")} />
+          <Pressable
+            onPress={() => setIsToggled((current) => !current)}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: isToggled ? toggledColor : defaultColor,
+                marginLeft: 10
+              },
+              
+            ]}
+          >
+            Personal Growth
+          </Pressable>
+        </View>
+
+        <View style={styles.habbitSection}>
+          <Image
+            source={require("../../assets/images/HobbyAndCreativity.png")}
+          />
+          <Pressable
+            onPress={() => setIsToggled((current) => !current)}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: isToggled ? toggledColor : defaultColor,
+              },
+            ]}
+          >
+            Hobby and creativity
+          </Pressable>
+        </View>
+
+        <View style={styles.habbitSection}>
+          <Image source={require("../../assets/images/HealthAndFitness.png")} />
+          <Pressable
+            onPress={() => setIsToggled((current) => !current)}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: isToggled ? toggledColor : defaultColor,
+                marginLeft: 10
+              },
+            ]}
+          >
+            Health and fitness
+          </Pressable>
+        </View>
+
+        <View style={styles.habbitSection}>
+          <Image
+            source={require("../../assets/images/WorkAndProductivity.png")}
+          />
+          <Pressable
+            onPress={() => setIsToggled((current) => !current)}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: isToggled ? toggledColor : defaultColor,
+                marginLeft: 10
+              },
+            ]}
+          >
+            Work and Productivity
+          </Pressable>
+        </View>
+
+        <View style={styles.habbitSection}>
+          <Image source={require("../../assets/images/HomeAndRoutine.png")} />
+          <Pressable
+            onPress={() => setIsToggled((current) => !current)}
+            style={({ pressed }) => [
+              styles.button,
+              {
+                backgroundColor: isToggled ? toggledColor : defaultColor,
+                marginLeft: 10
+              },
+            ]}
+          >
+            Home and routine
+          </Pressable>
+        </View>
       </View>
       <View style={styles.dayselectContainer}>
         <View>Select Day</View>
-        <View>Everyday</View>
+        <View style={styles.EverydayContainer}>
+          <Text style={{marginRight: 15}}>Everyday</Text>
+          <Switch
+          trackColor={{false: '#767577', true: '#81b0ff'}}
+          thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+        </View>
       </View>
       <View style={styles.daysSelection}>
         <Pressable
@@ -195,9 +237,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 72,
     width: "100%",
+    flexDirection: "column",
   },
   sectionTitle: {
     fontSize: 25,
+    marginBottom: 10,
   },
   HeaderGrid: {
     flexDirection: "row",
@@ -234,6 +278,7 @@ const styles = StyleSheet.create({
   daysSelection: {
     justifyContent: "space-evenly",
     flexDirection: "row",
+    marginBottom: 20,
   },
   button: {
     padding: 4,
@@ -243,6 +288,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
   },
+  sectionSpacing: {
+    marginBottom: 10,
+  },
+  habbitSection: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#A5D6A7",
+    margin: 10,
+    width: 177,
+    height: 33,
+  },
+  EverydayContainer: {
+    flexDirection: "row",
+  }
 });
 
 export default AddNewHabbit;
