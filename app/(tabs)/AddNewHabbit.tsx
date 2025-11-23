@@ -11,6 +11,8 @@ import {
 import { router } from "expo-router";
 
 const AddNewHabbit = () => {
+  const [selectedType, setSelectedType] = useState<number | null>(null);
+
   const [selectedDays, setSelectedDays] = useState<number[]>([]);
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -101,9 +103,8 @@ const AddNewHabbit = () => {
   return (
     <View style={styles.AddNewHabbitPage}>
       <View style={styles.sectionSpacing}>
-        
         <Pressable onPress={() => router.back()} style={styles.BackButton}>
-          <Image source={require("../../assets/images/BackButton.png")}/>
+          <Image source={require("../../assets/images/BackButton.png")} />
         </Pressable>
         <Text style={styles.sectionTitle}>New Habbit</Text>
         <TextInput
@@ -133,31 +134,34 @@ const AddNewHabbit = () => {
         <Text style={styles.sectionTitle}>Types of Habbit</Text>
         <View style={styles.sectionSpacing}>
           <View style={styles.habitSection}>
-            {habitTypes.map((item) => (
-              <View
-                key={item.id}
-                style={[
-                  styles.habbitContainer,
-                  {
-                    backgroundColor: item.bgColor,
-                    borderColor: item.borderColor,
-                  },
-                ]}
-              >
-                <Image source={item.icon} style={styles.habitIcon} />
+            {habitTypes.map((item) => {
+              const isSelected = selectedType === item.id;
 
+              return (
                 <Pressable
+                  key={item.id}
+                  onPress={() => setSelectedType(item.id)}
                   style={[
-                    styles.button,
-                    { marginLeft: 10, backgroundColor: item.bgColor },
+                    styles.habbitContainer,
+                    {
+                      backgroundColor: isSelected
+                        ? item.borderColor
+                        : item.bgColor,
+                      borderColor: isSelected ? "#000" : item.borderColor,
+                      transform: [{ scale: isSelected ? 1.05 : 1 }],
+                    },
                   ]}
                 >
-                  <Text style={{ color: item.textColor, fontSize: 12 }}>
+                  <Image source={item.icon} style={styles.habitIcon} />
+
+                  <Text
+                    style={{ color: "white", marginLeft: 10, fontSize: 12 }}
+                  >
                     {item.label}
                   </Text>
                 </Pressable>
-              </View>
-            ))}
+              );
+            })}
           </View>
         </View>
       </View>
@@ -299,8 +303,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   BackButton: {
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });
 
 export default AddNewHabbit;

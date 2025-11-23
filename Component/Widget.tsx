@@ -17,7 +17,7 @@ const Header = () => (
 const Widget = () => (
   <View style={styles.widgetSeperator}>
     <View style={styles.container}>
-      <Text>streak</Text>
+      <Text style={styles.containerText}>streak</Text>
       <Image
         source={require("../assets/images/StreakIcon.png")}
         style={styles.imageWidget}
@@ -28,20 +28,25 @@ const Widget = () => (
     <Separator />
 
     <View style={styles.container}>
-      <Text>Progress</Text>
+      <Text style={styles.containerText}>Progress</Text>
       <Image
         source={require("../assets/images/ProgressIcon.png")}
         style={styles.imageWidget}
       />
-      <Text>60%</Text>
+      <View style={styles.progressContainer}>
+        <View style={styles.progressBarBackground}>
+          <View style={[styles.progressBarFill, { width: "60%" }]} />
+        </View>
+        <Text style={{ color: "white", fontWeight: "bold" }}>50%</Text>
+      </View>
     </View>
 
     <Separator />
 
     <View style={styles.container}>
       <Image
-        source={require("../assets/images/NewHabbitIcon.png")}
-        style={styles.imageWidget}
+        source={require("../assets/images/WhiteAdd.png")}
+        style={styles.addimageWidget}
       />
       <Pressable
         style={styles.AddNewButton}
@@ -65,7 +70,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // flexDirection: "column",
+    alignItems: "center",
+
     justifyContent: "center",
     marginRight: 16,
     backgroundColor: "#00A991",
@@ -76,7 +82,7 @@ const styles = StyleSheet.create({
     maxWidth: 123,
   },
   widgetSeperator: {
-    // justifyContent: "center",
+
     flexDirection: "row",
     marginVertical: 15,
   },
@@ -102,16 +108,44 @@ const styles = StyleSheet.create({
     minWidth: 50,
   },
   AddNewButton: {
-    marginTop: 8,
     backgroundColor: "#00A991",
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
     alignSelf: "center",
   },
+  addimageWidget:{
+     marginTop: 20,
+     minHeight: 50,
+     minWidth: 50,
+     tintColor: "white"
+  },
   AddNewText: {
     fontSize: 13,
     justifyContent: "center",
+  },
+  containerText: {
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  progressBarBackground: {
+    flex: 1,
+    height: 10,
+    backgroundColor: "#ffffff55",
+    borderRadius: 6,
+    marginRight: 8,
+  },
+  progressBarFill: {
+    height: "100%",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 6,
+  },
+  progressContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "90%",
+    justifyContent: "space-between",
+    marginTop: 6,
   },
 });
 

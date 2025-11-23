@@ -14,7 +14,7 @@ const TaskList = () => {
       id: 2,
       label: "gym leg day",
       icon: require("../assets/images/HealthAndFitness.png"),
-      statusColor: "#B0BEC5",
+      statusColor: "#00A991",
       iconBackgroundColor: "#FFAB91",
     },
     {
